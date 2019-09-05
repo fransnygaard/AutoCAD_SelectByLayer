@@ -15,7 +15,7 @@ namespace AutoCAD_SelectByLayer
     public class Class1
     {
 
-        [CommandMethod("SelectByLayer")] //AutoCAD plugin command
+        [CommandMethod("SelectByLayer", CommandFlags.UsePickSet)] //AutoCAD plugin command
         public void SelectByLayer()
         {
             var layerSelectDialog = new LayerSelect();

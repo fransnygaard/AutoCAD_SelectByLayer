@@ -37,21 +37,43 @@ namespace AutoCAD_SelectByLayer
             Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
             Editor ed = doc.Editor;
+
+
             layersList = LayersToList(db);
             layer_listBox.DataSource = layersList;
 
 
-
             objectsToSelect = new ObjectIdCollection();
 
-            //preSelected = ed.GetSelection().Value;
 
-            //foreach (ObjectId objectId in preSelected)
-            //{
-            //    objectsToSelect.Add(objectId);
-            //}
+
+            using (Transaction tr = db.TransactionManager.StartOpenCloseTransaction())
+            {
+
+            PromptSelectionResult acSSPrompt;
+            acSSPrompt = ed.SelectImplied();
+            SelectionSet acSSet;
+               
+            // If the prompt status is OK, objects were selected before
+            // the command was started
+            if (acSSPrompt.Status == PromptStatus.OK)
+            {
+                acSSet = acSSPrompt.Value;
+
+                //Autodesk.AutoCAD.ApplicationServices.Application.ShowAlertDialog("Number of objects in Pickfirst selection: " +
+                //                            acSSet.Count.ToString());
+
+                foreach (ObjectId objectId in acSSet.GetObjectIds())
+                {
+                    objectsToSelect.Add(objectId);
+                }
+
+            }
+
+            }
 
             UpdateDebugPanel();
+            MakeSelection();
 
         }
 
@@ -118,7 +140,7 @@ namespace AutoCAD_SelectByLayer
             MakeSelection();
         }
 
-      
+
         private void RemoveFromSelection()
         {
 
@@ -183,7 +205,6 @@ namespace AutoCAD_SelectByLayer
 
         private void LayerSelect_Load(object sender, EventArgs e)
         {
-
         }
 
 
@@ -228,11 +249,11 @@ namespace AutoCAD_SelectByLayer
 
             if (objectsToSelect.Count == 0)
             {
-                nSelected.Text = "NO ITEMS FOUND";
+                nSelected.Text = "NO ITEMS SELECTED";
             }
             else
             {
-                nSelected.Text = String.Format("{0} ITEMS FOUND", objectsToSelect.Count);
+                nSelected.Text = String.Format("{0} ITEMS SELECTED", objectsToSelect.Count);
             }
 
             listBox_debug.DataSource = null;
