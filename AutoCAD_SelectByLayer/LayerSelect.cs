@@ -190,10 +190,13 @@ namespace AutoCAD_SelectByLayer
 
                 ObjectId[] objectIds = new ObjectId[objectsToSelect.Count];
 
+                ed.SetImpliedSelection(objectIds);
+
                 for (int i = 0; i < objectsToSelect.Count; i++)
                 {
                     objectIds[i] = objectsToSelect[i];
                 }
+
 
                 ed.SetImpliedSelection(objectIds);
 

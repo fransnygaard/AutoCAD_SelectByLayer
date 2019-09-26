@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCAD_SelectByLayer", "AutoCAD_SelectByLayer\AutoCAD_SelectByLayer.csproj", "{6D8CBBD2-882D-4CD8-B08C-7DF47466908D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCAD_PluginCollection", "AutoCAD_SelectByLayer\AutoCAD_PluginCollection.csproj", "{6D8CBBD2-882D-4CD8-B08C-7DF47466908D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

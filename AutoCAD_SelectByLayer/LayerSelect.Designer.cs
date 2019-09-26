@@ -83,6 +83,7 @@ namespace AutoCAD_SelectByLayer
             // 
             // layer_listBox
             // 
+            this.layer_listBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.layer_listBox.FormattingEnabled = true;
             this.layer_listBox.Location = new System.Drawing.Point(12, 12);
             this.layer_listBox.Name = "layer_listBox";
@@ -93,6 +94,7 @@ namespace AutoCAD_SelectByLayer
             // 
             // listBox_debug
             // 
+            this.listBox_debug.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.listBox_debug.FormattingEnabled = true;
             this.listBox_debug.Location = new System.Drawing.Point(12, 417);
             this.listBox_debug.Name = "listBox_debug";
